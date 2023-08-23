@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/productModel');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -91,7 +93,9 @@ app.post('/products', async(req, res) => {
 
 
 mongoose.
-connect('mongodb+srv://admin:12345@cluster0.dk4hacl.mongodb.net/?retryWrites=true&w=majority')
+connect(process.env.MONGODB_URL, {
+
+})
 .then(() => {
     app.listen(3000, ()=>{
         console.log("Node API app is running ...")
